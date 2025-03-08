@@ -1,5 +1,4 @@
 #include<iostream>
-#include <gtest/gtest.h>
 
 class ArrayList
 {
@@ -261,4 +260,27 @@ public:
     }
 };
 
+int max(ArrayList& list)
+{
+    if(list.count() == 0)
+    {
+        std::cout << "Empty array" << std::endl;
+        return -1;
+    }
 
+	int mx = list.get(0);
+	for (int i = 0; i < list.count(); ++i)
+	{
+		mx = (mx > list.get(i) ? mx : list.get(i));
+	}
+	return mx;
+}
+
+int main(int argc, char* argv[])
+{
+	ArrayList list(10);
+	list.randomize();
+	list.print();
+	printf("%d\n", max(list));
+	return 0;
+}
